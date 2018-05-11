@@ -1,4 +1,5 @@
-package com.skilldistillery.enums.drills.cards;
+package blackjack;
+
 
 public enum Suit {
   HEARTS("Hearts"), SPADES("Spades"), CLUBS("Clubs"), DIAMONDS("Diamonds");

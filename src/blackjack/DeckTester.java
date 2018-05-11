@@ -1,6 +1,8 @@
-package com.skilldistillery.enums.drills.cards;
+package blackjack;
+
 
 import java.util.Scanner;
+
 
 public class DeckTester {
 
@@ -30,6 +32,7 @@ public class DeckTester {
 
 			Card card = deck.dealCard();
 			System.out.println(card);
+			System.out.println(card.getValue());
 
 		}
 	}

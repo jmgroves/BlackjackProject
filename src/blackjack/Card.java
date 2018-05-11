@@ -1,4 +1,4 @@
-package com.skilldistillery.enums.drills.cards;
+package blackjack;
 
 public class Card {
 	private Suit suit;
@@ -8,17 +8,17 @@ public class Card {
 		return this.suit.toString();
 	}
 
-//	public void setSuit(String suit) {
-//		this.suit = suit;
-//	}
+	// public void setSuit(String suit) {
+	// this.suit = suit;
+	// }
 
 	public String getRank() {
 		return this.rank.toString();
 	}
 
-//	public void setRank(String rank) {
-//		this.rank = rank;
-//	}
+	// public void setRank(String rank) {
+	// this.rank = rank;
+	// }
 
 	public Card(Suit suit, Rank rank) {
 		super();
@@ -27,23 +27,51 @@ public class Card {
 
 	}
 
-	public int getValue(Card card) {
-		switch (card.rank.toString()) {
-		case "Ace": {
-			return 14;
-		}
-		case "King": {
-			return 13;
-		}
-		case "Queen": {
-			return 12;
-		}
-		case "Jack": {
+	public int getValue() {
+		switch (rank.toString()) {
+		case "ACE": {
 			return 11;
 		}
-		default: {
-			return Integer.parseInt(card.getRank());
+		case "KING": {
+			return 10;
 		}
+		case "QUEEN": {
+			return 10;
+		}
+		case "JACK": {
+			return 10;
+		}
+		case "TEN": {
+			return 10;
+		}
+		case "NINE": {
+			return 9;
+		}
+		case "EIGHT": {
+			return 8;
+		}
+		case "SEVEN": {
+			return 7;
+		}
+		case "SIX": {
+			return 6;
+		}
+		case "FIVE": {
+			return 5;
+		}
+		case "FOUR": {
+			return 5;
+		}
+		case "THREE": {
+			return 3;
+		}
+		case "TWO": {
+			return 2;
+		}
+		default: {
+			return 0;
+		}
+
 		}
 
 	}
@@ -77,6 +105,15 @@ public class Card {
 		} else if (!suit.equals(other.suit))
 			return false;
 		return true;
-}
-	
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(rank);
+		builder.append(" of ");
+		builder.append(suit);
+		return builder.toString();
+	}
+
 }

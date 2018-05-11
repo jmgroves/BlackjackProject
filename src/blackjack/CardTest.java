@@ -1,4 +1,5 @@
-package com.skilldistillery.enums.drills.cards;
+package blackjack;
+
 
 public class CardTest {
   public static void main(String[] args) {

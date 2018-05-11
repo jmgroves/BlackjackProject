@@ -1,10 +1,10 @@
-package com.skilldistillery.enums.drills.cards;
+package blackjack;
+
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.skilldistillery.enums.solutions.cards.Card;
 
 public class Deck {
 	private List<Card> deck = new ArrayList<>();
@@ -14,7 +14,7 @@ public class Deck {
 	public Deck() {
 		for (int i = 0; i < suits.length; i++) {
 			for (int j = 0; j < rank.length; j++) {
-				deck.add(new Card(suits[i].toString(), rank[j].toString()));
+				deck.add(new Card(suits[i], rank[j]));
 			}
 		}
 	}
