@@ -7,6 +7,8 @@ public class BlackjackApp {
 	Deck deck = new Deck();
 	BlackjackHand playerHand = new BlackjackHand();
 	BlackjackHand dealerHand = new BlackjackHand();
+	private int playerWallet = 1500;
+	private int bet;
 
 	public static void main(String[] args) {
 		BlackjackApp bj = new BlackjackApp();
@@ -21,6 +23,7 @@ public class BlackjackApp {
 	}
 
 	private void dealGame() {
+		playerBet();
 		playerHand.clearHand();
 		dealerHand.clearHand();
 		Deck deck = new Deck();
@@ -48,6 +51,23 @@ public class BlackjackApp {
 
 	}
 
+	private void playerBet() {
+		boolean badBet = true;
+		System.out.println("You have $" + playerWallet + ".\n" + "How much would you like to bet?");
+		bet = kb.nextInt();
+		if (bet > playerWallet || bet < 0) {
+			while (badBet) {
+				System.out.println("Invalid bet. Please try again.");
+				bet = kb.nextInt();
+				if (bet <= playerWallet && bet > 0) {
+					badBet = false;
+					break;
+				}
+			}
+		}
+
+	}
+
 	private void pause() {
 		try {
 			Thread.sleep(400);
@@ -63,6 +83,7 @@ public class BlackjackApp {
 		}
 		if (playerHand.getHandValue() == 21) {
 			System.out.println("Blackjack!!");
+			playerWallet += (bet * .5);
 			win();
 		}
 		if (dealerHand.getHandValue() == 21) {
@@ -74,6 +95,11 @@ public class BlackjackApp {
 
 	private void lose() {
 		System.out.println("Sorry bud. You lose.");
+		playerWallet -= bet;
+		if (playerWallet <= 0) {
+			System.out.println("Sorry! You've lost all your money.\nGAME OVER");
+			System.exit(0);
+		}
 		playAgain();
 
 	}
@@ -102,6 +128,7 @@ public class BlackjackApp {
 
 	private void win() {
 		System.out.println("You win! Conrgats!");
+		playerWallet += bet;
 		playAgain();
 	}
 
@@ -111,7 +138,7 @@ public class BlackjackApp {
 			System.out.println("[1] - Hit");
 			System.out.println("[2] - Stand");
 			int choice = kb.nextInt();
-			
+
 			switch (choice) {
 			case 1: {
 				playerHand.addCard(deck.dealCard());
